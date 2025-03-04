@@ -4,9 +4,9 @@
 @tailwind base;
 
 @layer base {
-	body {
-		font-family: "Inter", theme("fontFamily.sans");
-	}
+  body {
+    font-family: "Inter", theme("fontFamily.sans");
+  }
 }
 
 @tailwind components;
