@@ -1,0 +1,13 @@
+@import "@fontsource/inter/400";
+@import "@fontsource/inter/700";
+
+@tailwind base;
+
+@layer base {
+	body {
+		font-family: "Inter", theme("fontFamily.sans");
+	}
+}
+
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,23 @@
+{
+  "name": "@omni-art/server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --loader ts-node/esm index.ts",
+    "with:nodemon": "nodemon --exec node --loader ts-node/esm index.ts"
+  },
+  "devDependencies": {
+    "@fastify/caching": "^9.0.3",
+    "@types/node": "^22.10.10",
+    "domhandler": "^5.0.3",
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "fastify": "^5.2.1"
+  }
+}

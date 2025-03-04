@@ -1,0 +1,11 @@
+{
+  "name": "omni-art",
+  "version": "0.0.1",
+  "author": "Kerby Keith Aquino <hello@kurojifusky.com>",
+  "description": "An all-in-one tool to bulk search from art platforms such as DeviantArt, InkBunny, FurAffinity, etc.",
+  "scripts": {
+    "dev": "pnpm --filter @omni-art/client dev",
+    "build": "pnpm --filter @omni-art/client build"
+  },
+  "license": "GPL-2.0-only"
+}
