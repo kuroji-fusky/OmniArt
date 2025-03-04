@@ -6,7 +6,17 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.10
+        version: 22.13.9
+      prettier:
+        specifier: ^3.1.1
+        version: 3.5.3
+      prettier-plugin-svelte:
+        specifier: ^3.1.2
+        version: 3.3.3(prettier@3.5.3)(svelte@5.22.1)
 
   client:
     dependencies:
@@ -38,12 +48,6 @@ importers:
       postcss:
         specifier: ^8.4.41
         version: 8.5.3
-      prettier:
-        specifier: ^3.1.1
-        version: 3.5.3
-      prettier-plugin-svelte:
-        specifier: ^3.1.2
-        version: 3.3.3(prettier@3.5.3)(svelte@5.22.1)
       svelte:
         specifier: ^5.20.5
         version: 5.22.1
