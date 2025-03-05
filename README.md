@@ -54,3 +54,7 @@ A latest version of Node.js or the latest LTS version is installed on your syste
 ## License
 
 [GPL-2.0](/LICENSE)
+
+## Disclaimer
+
+OmniArt does not own any of the content displayed on its source code or from the website. All images and artworks remain the property of their respective copyright holders. OmniArt merely aggregates publicly available data for user's convenience and is intended solely for personal, non-commercial use.
