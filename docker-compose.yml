@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  om-client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+
+  om-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+
+  om-cache:
+    image: redis:latest
+    ports:
+      - 4444:6379
+    command: ["redis-server"]

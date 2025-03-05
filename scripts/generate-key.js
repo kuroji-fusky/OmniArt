@@ -6,9 +6,7 @@ import path from "path"
 const rawToken = Buffer.from(crypto.randomBytes(48)).toString("hex")
 const tokenToFeed = `om_${rawToken}`
 
-const __pwd = process.cwd()
-
-const envFilePath = path.join(__pwd, ".env")
+const envFilePath = path.join(process.cwd(), ".env")
 
 if (!fs.existsSync(envFilePath)) {
   fs.writeFileSync(envFilePath, "")
