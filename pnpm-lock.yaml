@@ -72,6 +72,9 @@ importers:
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
+      domhandler:
+        specifier: ^5.0.3
+        version: 5.0.3
       fastify:
         specifier: ^5.2.1
         version: 5.2.1
@@ -82,9 +85,6 @@ importers:
       '@types/node':
         specifier: ^22.10.10
         version: 22.13.9
-      domhandler:
-        specifier: ^5.0.3
-        version: 5.0.3
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
