@@ -2,6 +2,16 @@
 
 An all-in-one solution to search artworks from known art platforms!
 
+## About
+
+__OmniArt__ is an open-source art aggregator website that allows you to search artworks from known art platforms, DeviantArt, Pixiv, Behance, in bulk!
+
+- Filter out by searching from one or more [supported platforms](#supported-platforms)
+- Ability to include explicit (or NSFW) content
+- Includes flexible API
+- CLI support soon!
+- No ads and AI "algorithm" BS
+
 ## Supported platforms
 
 > [!NOTE]
@@ -9,29 +19,30 @@ An all-in-one solution to search artworks from known art platforms!
 > All requests are cached to circument rate-limiting and stay persistent for an hour.
 > The hosted version will be limited to save on database hosting costs.
 
-| Platform      | Method    | API Access                 |
-| ------------- | --------- | -------------------------- |
-| ArtStation    | API       | Yes, via internal requests |
-| Behance       | API       | Yes                        |
-| DeviantArt    | Web crawl | Limited                    |
-| e621/e926     | Web crawl | No                         |
-| FurAffinity   | Web crawl | No                         |
-| Furry Network | API       | Yes, via internal requests |
-| Giphy         | API       | Yes, requires auth         |
-| InkBunny      | Web crawl | No                         |
-| Itaku         | Web crawl | Unknown                    |
-| Newgrounds    | Web crawl | No                         |
-| Pinterest     | API       | Yes, requires auth         |
-| Pixiv         | API       | Limited                    |
-| Tenor         | API       | Yes, requires auth         |
-| Toyhouse      | Web crawl | No                         |
-| Weasyl        | Web crawl | No                         |
+| Platform                                          | Method    | API Access                 |
+| ------------------------------------------------- | --------- | -------------------------- |
+| [ArtStation](https://artstation.com)              | API       | Yes, via internal requests |
+| [Behance](https://behance.com)                    | API       | Yes                        |
+| [DeviantArt](https://deviantart.com)              | Web crawl | Limited                    |
+| [Dribbble](https://dribbble.com)                  | API       | Limited                    |
+| [e621](https://e621.net)/[e926](https://e926.net) | Web crawl | No                         |
+| [FurAffinity](https://furaffinity.net)            | Web crawl | No                         |
+| [Furry Network](https://furrynetwork.com)         | API       | Yes, via internal requests |
+| [Giphy](https://giphy.com)                        | API       | Yes, requires auth         |
+| [InkBunny](https://inkbunny.com)                  | Web crawl | No                         |
+| [Itaku](https://itaku.ee)                         | Web crawl | Unknown                    |
+| [Newgrounds](https://newgrounds.com)              | Web crawl | No                         |
+| [Pinterest](https://pinterest.com)                | API       | Yes, requires auth         |
+| [Pixiv](https://pixiv.com)                        | API       | Limited                    |
+| [Tenor](https://tenor.com)                        | API       | Yes, requires auth         |
+| [Toyhouse](https://toyhou.se)                     | Web crawl | No                         |
+| [Weasyl](https://weasyl.com)                      | Web crawl | No                         |
 
-Unfortunately, platforms such as Twitter/X and Instagram are excluded because they're notoriously difficult to scrape and have limited API access. With Twitter having a paywalled access to their API isn't feasble for those who prefer to deploy through Docker.
+If you think there's something you'd like to add, feel free to create an issue! However, if you wish to be excluded from the list, feel free to reach me out at hello@kurojifusky[.]com.
 
-They can be ambiguous for providing a simple search query, and having to create additional complex filters by handle can already put a lot of technical burden on this project.
+### Limitations for Twitter/X and Instagram
 
-However, if you wish to be excluded from the list, feel free to reach me out at hello@kurojifusky[.]com.
+Unfortunately, platforms such as Twitter/X and Instagram will never be included simply because they're notoriously difficult to scrape and have limited API access. With Twitter, in particular, having a paywalled access to their API, isn't feasble for those who prefer to deploy through Docker that already put strains the technical burden on this project.
 
 ## Contributing
 
@@ -43,7 +54,7 @@ A latest version of Node.js or the latest LTS version is installed on your syste
 1. Generate an API key with `pnpm run generate-key`, or alternatively, `node scripts/generate-key.js`, it should display out:
 
    ```console
-   Token generated! This token has already populated from an .env file.
+   Token generated! This token has already populated from an `.env` file.
 
    om_<random 96 characters>
 
