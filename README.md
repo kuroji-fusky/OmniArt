@@ -4,13 +4,17 @@ An all-in-one solution to search artworks from known art platforms!
 
 ## About
 
-__OmniArt__ is an open-source art aggregator website that allows you to search artworks from known art platforms, DeviantArt, Pixiv, Behance, in bulk!
+**OmniArt** is an open-source art aggregator website that allows you to search artworks from known art platforms, DeviantArt, Pixiv, Behance, etc. in bulk!
 
 - Filter out by searching from one or more [supported platforms](#supported-platforms)
 - Ability to include explicit (or NSFW) content
 - Includes flexible API
 - CLI support soon!
-- No ads and AI "algorithm" BS
+- Best of all: there are no invasive ads and AI "algorithm" BS
+
+## Disclaimer
+
+OmniArt does not own any of the content displayed on its source code or from the website. All images and artworks remain the property of their respective copyright holders. OmniArt merely aggregates publicly available data for user's convenience and is intended solely for personal, non-commercial use.
 
 ## Supported platforms
 
@@ -48,24 +52,8 @@ Unfortunately, platforms such as Twitter/X and Instagram will never be included 
 
 ### Setup
 
-A latest version of Node.js or the latest LTS version is installed on your system.
-
-1. Install its dependencies using `pnpm i`
-1. Generate an API key with `pnpm run generate-key`, or alternatively, `node scripts/generate-key.js`, it should display out:
-
-   ```console
-   Token generated! This token has already populated from an `.env` file.
-
-   om_<random 96 characters>
-
-   ```
-
-   It will add this key automatically to your `.env` file
+A latest version of Go and Node.js or the latest LTS version is installed on your system.
 
 ## License
 
 [GPL-2.0](/LICENSE)
-
-## Disclaimer
-
-OmniArt does not own any of the content displayed on its source code or from the website. All images and artworks remain the property of their respective copyright holders. OmniArt merely aggregates publicly available data for user's convenience and is intended solely for personal, non-commercial use.
