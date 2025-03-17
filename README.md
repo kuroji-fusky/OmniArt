@@ -1,5 +1,10 @@
 # OmniArt
 
+> [!NOTE]
+>
+> This project is still currently in active development, the final product still isn't available
+> for the time being.
+
 An all-in-one solution to search artworks from known art platforms!
 
 ## About
