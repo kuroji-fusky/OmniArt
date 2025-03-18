@@ -1,4 +1,4 @@
-package scraper
+package utils
 
 import (
 	"io"

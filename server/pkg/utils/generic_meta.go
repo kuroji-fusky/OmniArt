@@ -1,4 +1,4 @@
-package scraper
+package utils
 
 import (
 	"google.golang.org/genproto/googleapis/type/date"
