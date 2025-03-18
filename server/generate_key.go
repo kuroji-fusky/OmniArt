@@ -4,6 +4,7 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -17,8 +18,7 @@ func main() {
 
 	cwd, err := os.Getwd()
 	if err != nil {
-		fmt.Println("Error getting current working directory:", err)
-		return
+		log.Fatal("Error getting current working directory:", err)
 	}
 
 	envFilePath := filepath.Join(cwd, "..", ".env")
@@ -28,8 +28,7 @@ func main() {
 	if data, err := os.ReadFile(envFilePath); err == nil {
 		envFileContent = string(data)
 	} else if !os.IsNotExist(err) {
-		fmt.Println("Error reading .env file:", err)
-		return
+		log.Fatal("Error reading .env file:", err)
 	}
 
 	re := regexp.MustCompile(`(?m)^API_KEY=.*$`)
@@ -45,8 +44,7 @@ func main() {
 
 	err = os.WriteFile(envFilePath, []byte(envFileContent), 0644)
 	if err != nil {
-		fmt.Println("Error writing to .env file:", err)
-		return
+		log.Fatal("Error writing to .env file:", err)
 	}
 
 	fmt.Printf("Token generated! This token has already populated from an .env file.\n\n%s\n", tokenToFeed)
