@@ -16,7 +16,7 @@ import (
 
 type FAUserParams struct {
 	User string
-	Tab  string // "home" | "gallery"| "scraps"| "favorites"| "journals"| "commissions"
+	Tab  string // "home" | "gallery" | "scraps" | "favorites" | "journals" | "commissions"
 }
 
 func FurAffinityUser(params *FAUserParams) {
