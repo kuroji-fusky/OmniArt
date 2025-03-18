@@ -11,8 +11,11 @@ import (
 )
 
 func main() {
-	bytes := make([]byte, 48)
+	bytes := make([]byte, 32)
 	_, err := rand.Read(bytes)
+	if err != nil {
+		log.Fatal("For some reason, it couldn't generate a token:", err)
+	}
 
 	tokenToFeed := "om_" + hex.EncodeToString(bytes)
 
