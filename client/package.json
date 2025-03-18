@@ -13,6 +13,7 @@
     "@fontsource/inter": "^5.0.20"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@iconify-json/lucide": "^1.1.208",
     "@sveltejs/adapter-auto": "^4.0.0",
     "@sveltejs/kit": "^2.0.0",
