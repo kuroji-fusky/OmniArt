@@ -34,15 +34,15 @@ func main() {
 		log.Fatal("Error reading .env file:", err)
 	}
 
-	re := regexp.MustCompile(`(?m)^API_KEY=.*$`)
+	re := regexp.MustCompile(`(?m)^OM_SECRET_API_TOKEN=.*$`)
 
 	if re.MatchString(envFileContent) {
-		envFileContent = re.ReplaceAllString(envFileContent, "API_KEY="+tokenToFeed)
+		envFileContent = re.ReplaceAllString(envFileContent, "OM_SECRET_API_TOKEN="+tokenToFeed)
 	} else {
 		if len(envFileContent) > 0 {
 			envFileContent += "\n"
 		}
-		envFileContent += "API_KEY=" + tokenToFeed
+		envFileContent += "OM_SECRET_API_TOKEN=" + tokenToFeed
 	}
 
 	err = os.WriteFile(envFilePath, []byte(envFileContent), 0644)
