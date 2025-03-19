@@ -12,6 +12,13 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
+func customHeader(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		c.Response().Header().Set("X-Made-With", "Your mom lol")
+		return next(c)
+	}
+}
+
 func main() {
 	// Load env
 	cwd, cwdErr := os.Getwd()
@@ -19,7 +26,7 @@ func main() {
 		log.Fatal("Error getting current working directory:", cwdErr)
 	}
 
-	envPath := filepath.Join(cwd, "..", ".env")
+	envPath := filepath.Join(cwd, "..", "..", ".env")
 	envErr := godotenv.Load(envPath)
 	if envErr != nil {
 		log.Fatal("Something fucked up when loading that .env file")
@@ -45,6 +52,7 @@ func main() {
 		middleware.RemoveTrailingSlashWithConfig(middleware.TrailingSlashConfig{
 			RedirectCode: http.StatusPermanentRedirect,
 		}),
+		customHeader,
 	)
 
 	e.GET("/", func(c echo.Context) error {
@@ -52,6 +60,21 @@ func main() {
 			"message": "It's me hi I'm the problem it's me",
 		})
 	})
+
+	// `/blacklist`
+	e.GET("/blacklist", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string][]string{
+			"blacklist": {"There's supposed to be a list of blacklist of websites and stuff, but I'm lazy lol"},
+		})
+	})
+
+	e.POST("/blacklist", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string]string{
+			"message": "This is a POST request to add to the blacklist",
+		})
+	})
+
+	// Search stuff
 
 	e.Logger.Fatal(e.Start(":4000"))
 }
