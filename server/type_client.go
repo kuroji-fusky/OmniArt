@@ -1,3 +1,7 @@
+/*
+A generator script that converts Go structs to TypeScript types
+for the client to have a share of pizza and eat it too
+*/
 package main
 
 func convertToTs(primitiveType string) string {

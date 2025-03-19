@@ -19,21 +19,24 @@ type FAUserParams struct {
 	Tab  string // "home" | "gallery" | "scraps" | "favorites" | "journals" | "commissions"
 }
 
-func FurAffinityUser(params *FAUserParams) {
-	homeTab := params.Tab == "home"
-	galleryTab := params.Tab == "gallery"
-	scrapsTab := params.Tab == "scraps"
-	favoritesTab := params.Tab == "favorites"
-	journalsTab := params.Tab == "journals"
-	commissionsTab := params.Tab == "commissions"
-
-	validFATabs := homeTab || galleryTab || scrapsTab || favoritesTab || journalsTab || commissionsTab
-
-	if !validFATabs {
-		log.Fatal("Tab" + params.Tab + "is not valid")
+func FurAffinityUser(params *FAUserParams) (map[string]any, error) {
+	validFATabs := map[string]bool{
+		"home":        true,
+		"gallery":     true,
+		"scraps":      true,
+		"favorites":   true,
+		"journals":    true,
+		"commissions": true,
 	}
 
-	// Implmentation WIP
+	if !validFATabs[params.Tab] {
+		log.Fatalf("Tab %q is not valid", params.Tab)
+	}
+
+	// Implementation WIP
+	tmpData := map[string]any{}
+
+	return tmpData, nil
 }
 
 type FASearchQueryParams struct {
@@ -67,7 +70,11 @@ type FASearchQueryParams struct {
 	QueryMode string `json:"mode"` // "all" | "any" | "extended"
 }
 
-func FurAffinityQuery(params *FASearchQueryParams) {
+func FurAffinityQuery(params *FASearchQueryParams) (map[string]any, error) {
 	// Implmentation WIP
 	// Bools from FASearchQueryParams struct are interpreted as literal `"1"` string from the API
+
+	tmpData := map[string]any{}
+
+	return tmpData, nil
 }
