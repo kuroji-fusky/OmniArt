@@ -1,25 +1,27 @@
 /*
 Handler for Fur Affinity
-
-Domains:
-- furaffinity.net
-- sfw.furaffinity.net
-- d.furaffinity.net
 */
 package providers
 
 import (
-	"log"
-
+	"github.com/kuroji-fusky/OmniArt/server/utils"
 	"google.golang.org/genproto/googleapis/type/date"
 )
 
-type FAUserParams struct {
+// Domains
+
+const (
+	FA_URL       = "furaffinity.net"
+	FA_SFW_URL   = "sfw.furaffinity.net"
+	FA_IMAGE_URL = "d.furaffinity.net"
+)
+
+type FurAffinityUserParams struct {
 	User string
 	Tab  string // "home" | "gallery" | "scraps" | "favorites" | "journals" | "commissions"
 }
 
-func FurAffinityUser(params *FAUserParams) (map[string]any, error) {
+func FurAffinityUser(params FurAffinityUserParams) (map[string]any, error) {
 	validFATabs := map[string]bool{
 		"home":        true,
 		"gallery":     true,
@@ -29,8 +31,8 @@ func FurAffinityUser(params *FAUserParams) (map[string]any, error) {
 		"commissions": true,
 	}
 
-	if !validFATabs[params.Tab] {
-		log.Fatalf("Tab %q is not valid", params.Tab)
+	if ok, err := utils.CheckValidStringMap(validFATabs, params.Tab, ""); !ok {
+		return nil, err
 	}
 
 	// Implementation WIP
@@ -39,9 +41,9 @@ func FurAffinityUser(params *FAUserParams) (map[string]any, error) {
 	return tmpData, nil
 }
 
-type FASearchQueryParams struct {
+type FurAffinityQueryParams struct {
 	Page          int    `json:"page,omitempty"`
-	OrderBy       string `json:"order-by,omitempty"`        //"popularity" | "date" | "relevancy"
+	OrderBy       string `json:"order-by,omitempty"`        // "popularity" | "date" | "relevancy"
 	OrderDirecton string `json:"order-direction,omitempty"` // "asc" | "desc"
 	Query         string `json:"q"`
 
@@ -70,9 +72,48 @@ type FASearchQueryParams struct {
 	QueryMode string `json:"mode"` // "all" | "any" | "extended"
 }
 
-func FurAffinityQuery(params *FASearchQueryParams) (map[string]any, error) {
+func FurAffinityQuery(params *FurAffinityQueryParams) (map[string]any, error) {
 	// Implmentation WIP
-	// Bools from FASearchQueryParams struct are interpreted as literal `"1"` string from the API
+	// Bools from FurAffinityQueryParams struct are interpreted as literal `"1"` string from the API
+
+	// "range" param
+	validQueryRange := map[string]bool{
+		"1day":   true,
+		"3days":  true,
+		"7days":  true,
+		"30days": true,
+		"90days": true,
+		"1year":  true,
+		"3years": true,
+		"5years": true,
+		"all":    true,
+		"manual": true,
+	}
+
+	if queryRangeOK, queryRangeErr := utils.CheckValidStringMap(validQueryRange, params.Range, ""); !queryRangeOK {
+		return nil, queryRangeErr
+	}
+
+	// "order-by" query
+	validQueryOrderBy := map[string]bool{
+		"popularity": true,
+		"date":       true,
+		"relevancy":  true,
+	}
+
+	if orderByOK, queryOrderByErr := utils.CheckValidStringMap(validQueryOrderBy, params.OrderBy, ""); !orderByOK {
+		return nil, queryOrderByErr
+	}
+
+	// "order-direction" query
+	validQueryOrderDirection := map[string]bool{
+		"asc":  true,
+		"desc": true,
+	}
+
+	if orderDirectionOK, orderDirectionErr := utils.CheckValidStringMap(validQueryOrderDirection, params.OrderDirecton, ""); !orderDirectionOK {
+		return nil, orderDirectionErr
+	}
 
 	tmpData := map[string]any{}
 
