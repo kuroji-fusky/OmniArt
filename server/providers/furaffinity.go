@@ -4,8 +4,8 @@ Handler for Fur Affinity
 package providers
 
 import (
-	"github.com/kuroji-fusky/OmniArt/server/utils"
-	"google.golang.org/genproto/googleapis/type/date"
+	"github.com/kuroji-fusky/OmniArt/server/providers/furaffinity"
+	internal_utils "github.com/kuroji-fusky/OmniArt/server/utils"
 )
 
 // Domains
@@ -16,22 +16,17 @@ const (
 	FA_IMAGE_URL = "d.furaffinity.net"
 )
 
-type FurAffinityUserParams struct {
-	User string
-	Tab  string // "home" | "gallery" | "scraps" | "favorites" | "journals" | "commissions"
-}
-
-func FurAffinityUser(params FurAffinityUserParams) (map[string]any, error) {
+func FurAffinityUser(params furaffinity.FurAffinityUserParams) (map[string]any, error) {
 	validFATabs := map[string]bool{
-		"home":        true,
-		"gallery":     true,
-		"scraps":      true,
-		"favorites":   true,
-		"journals":    true,
-		"commissions": true,
+		furaffinity.TabHome:        true,
+		furaffinity.TabGallery:     true,
+		furaffinity.TabScraps:      true,
+		furaffinity.TabFavorites:   true,
+		furaffinity.TabJournals:    true,
+		furaffinity.TabCommissions: true,
 	}
 
-	if ok, err := utils.CheckValidStringMap(validFATabs, params.Tab, ""); !ok {
+	if ok, err := internal_utils.CheckValidStringMap(validFATabs, params.Tab, ""); !ok {
 		return nil, err
 	}
 
@@ -41,78 +36,57 @@ func FurAffinityUser(params FurAffinityUserParams) (map[string]any, error) {
 	return tmpData, nil
 }
 
-type FurAffinityQueryParams struct {
-	Page          int    `json:"page,omitempty"`
-	OrderBy       string `json:"order-by,omitempty"`        // "popularity" | "date" | "relevancy"
-	OrderDirecton string `json:"order-direction,omitempty"` // "asc" | "desc"
-	Query         string `json:"q"`
-
-	// Range
-
-	Range     string    `json:"range"` // "1day" | "3days" | "7days" | "30days" | "90days" | "1year" | "3years" | "5years" | "all" | "manual"
-	RangeFrom date.Date `json:"range_from,omitempty"`
-	RageTo    date.Date `json:"range_to,omitempty"`
-
-	// Ratings
-
-	RatingGeneral bool `json:"rating-general,omitempty"`
-	RatingMature  bool `json:"rating-mature,omitempty"`
-	RatingAdult   bool `json:"rating-adult,omitempty"`
-
-	// Submission types
-
-	TypeArt    bool `json:"type-art,omitempty"`
-	TypeMusic  bool `json:"type-music,omitempty"`
-	TypePhotos bool `json:"type-photos,omitempty"`
-	TypeFlash  bool `json:"type-flash,omitempty"`
-	TypeStory  bool `json:"type-story,omitempty"`
-
-	// matching keywords from its query param
-
-	QueryMode string `json:"mode"` // "all" | "any" | "extended"
-}
-
-func FurAffinityQuery(params *FurAffinityQueryParams) (map[string]any, error) {
+func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any, error) {
 	// Implmentation WIP
 	// Bools from FurAffinityQueryParams struct are interpreted as literal `"1"` string from the API
 
 	// "range" param
 	validQueryRange := map[string]bool{
-		"1day":   true,
-		"3days":  true,
-		"7days":  true,
-		"30days": true,
-		"90days": true,
-		"1year":  true,
-		"3years": true,
-		"5years": true,
-		"all":    true,
-		"manual": true,
+		furaffinity.Range1Day:   true,
+		furaffinity.Range3Days:  true,
+		furaffinity.Range7Days:  true,
+		furaffinity.Range30Days: true,
+		furaffinity.Range90Days: true,
+		furaffinity.Range1Year:  true,
+		furaffinity.Range3Years: true,
+		furaffinity.Range5Years: true,
+		furaffinity.RangeAll:    true,
+		furaffinity.RangeManual: true,
 	}
 
-	if queryRangeOK, queryRangeErr := utils.CheckValidStringMap(validQueryRange, params.Range, ""); !queryRangeOK {
+	if queryRangeOK, queryRangeErr := internal_utils.CheckValidStringMap(validQueryRange, params.Range, ""); !queryRangeOK {
 		return nil, queryRangeErr
 	}
 
 	// "order-by" query
 	validQueryOrderBy := map[string]bool{
-		"popularity": true,
-		"date":       true,
-		"relevancy":  true,
+		furaffinity.OrderByPopularity: true,
+		furaffinity.OrderByDate:       true,
+		furaffinity.OrderByRelevancy:  true,
 	}
 
-	if orderByOK, queryOrderByErr := utils.CheckValidStringMap(validQueryOrderBy, params.OrderBy, ""); !orderByOK {
+	if orderByOK, queryOrderByErr := internal_utils.CheckValidStringMap(validQueryOrderBy, params.OrderBy, ""); !orderByOK {
 		return nil, queryOrderByErr
 	}
 
 	// "order-direction" query
 	validQueryOrderDirection := map[string]bool{
-		"asc":  true,
-		"desc": true,
+		furaffinity.OrderDirectionAsc:  true,
+		furaffinity.OrderDirectionDesc: true,
 	}
 
-	if orderDirectionOK, orderDirectionErr := utils.CheckValidStringMap(validQueryOrderDirection, params.OrderDirecton, ""); !orderDirectionOK {
+	if orderDirectionOK, orderDirectionErr := internal_utils.CheckValidStringMap(validQueryOrderDirection, params.OrderDirecton, ""); !orderDirectionOK {
 		return nil, orderDirectionErr
+	}
+
+	validQueryMode := map[string]bool{
+		furaffinity.QueryModeAll:      true,
+		furaffinity.QueryModeAny:      true,
+		furaffinity.QueryModeExtended: true,
+	}
+
+	if queryModeOK, queryModeErr := internal_utils.CheckValidStringMap(validQueryMode, params.QueryMode, ""); !queryModeOK {
+		return nil, queryModeErr
 	}
 
 	tmpData := map[string]any{}
