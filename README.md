@@ -55,9 +55,34 @@ Unfortunately, platforms such as Twitter/X and Instagram will never be included 
 
 ## Contributing
 
+After cloning/forking the project, you must have the proper prerequisites:
+
+- Go (v1.22.0 or higher)
+- Node.js (v20 or higher)
+- PNPM package manager
+- `make` (Optional)
+
 ### Setup
 
-A latest version of Go and Node.js or the latest LTS version is installed on your system.
+#### Installing manually
+
+- Installing dependencies
+
+  - In the `client` directory, run `pnpm install`, or its shorthand, `pnpm i`
+  - In the `server` directory, run `go get download`
+
+- Generating an API token
+
+  - If you're already in the `server` directory, run the following command to auto-generate an `.env` file
+    already populated with an API token for you
+
+    ```sh
+    go run cmd/generate-key
+    ```
+
+#### Via Docker
+
+TBA
 
 ## License
 
