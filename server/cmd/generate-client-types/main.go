@@ -19,3 +19,7 @@ func convertToTs(primitiveType string) string {
 		return "unknown"
 	}
 }
+
+func main() {
+
+}

@@ -4,12 +4,11 @@ Handler for Fur Affinity
 package providers
 
 import (
+	"github.com/kuroji-fusky/OmniArt/server/internal/utils"
 	"github.com/kuroji-fusky/OmniArt/server/providers/furaffinity"
-	internal_utils "github.com/kuroji-fusky/OmniArt/server/utils"
 )
 
 // Domains
-
 const (
 	FA_URL       = "furaffinity.net"
 	FA_SFW_URL   = "sfw.furaffinity.net"
@@ -26,7 +25,7 @@ func FurAffinityUser(params furaffinity.FurAffinityUserParams) (map[string]any, 
 		furaffinity.TabCommissions: true,
 	}
 
-	if ok, err := internal_utils.CheckValidStringMap(validFATabs, params.Tab, ""); !ok {
+	if ok, err := utils.CheckValidStringMap(validFATabs, params.Tab, ""); !ok {
 		return nil, err
 	}
 
@@ -54,7 +53,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.RangeManual: true,
 	}
 
-	if queryRangeOK, queryRangeErr := internal_utils.CheckValidStringMap(validQueryRange, params.Range, ""); !queryRangeOK {
+	if queryRangeOK, queryRangeErr := utils.CheckValidStringMap(validQueryRange, params.Range, ""); !queryRangeOK {
 		return nil, queryRangeErr
 	}
 
@@ -65,7 +64,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.OrderByRelevancy:  true,
 	}
 
-	if orderByOK, queryOrderByErr := internal_utils.CheckValidStringMap(validQueryOrderBy, params.OrderBy, ""); !orderByOK {
+	if orderByOK, queryOrderByErr := utils.CheckValidStringMap(validQueryOrderBy, params.OrderBy, ""); !orderByOK {
 		return nil, queryOrderByErr
 	}
 
@@ -75,7 +74,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.OrderDirectionDesc: true,
 	}
 
-	if orderDirectionOK, orderDirectionErr := internal_utils.CheckValidStringMap(validQueryOrderDirection, params.OrderDirecton, ""); !orderDirectionOK {
+	if orderDirectionOK, orderDirectionErr := utils.CheckValidStringMap(validQueryOrderDirection, params.OrderDirecton, ""); !orderDirectionOK {
 		return nil, orderDirectionErr
 	}
 
@@ -85,7 +84,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.QueryModeExtended: true,
 	}
 
-	if queryModeOK, queryModeErr := internal_utils.CheckValidStringMap(validQueryMode, params.QueryMode, ""); !queryModeOK {
+	if queryModeOK, queryModeErr := utils.CheckValidStringMap(validQueryMode, params.QueryMode, ""); !queryModeOK {
 		return nil, queryModeErr
 	}
 
