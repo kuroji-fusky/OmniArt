@@ -51,7 +51,7 @@ If you think there's something you'd like to add, feel free to create an issue! 
 
 ### Limitations for Twitter/X and Instagram
 
-Unfortunately, platforms such as Twitter/X and Instagram will never be included simply because they're notoriously difficult to scrape and have limited API access. With Twitter, in particular, having a paywalled access to their API, isn't feasble for those who prefer to deploy through Docker that already put strains the technical burden on this project.
+Unfortunately, platforms such as Twitter/X and Instagram will _never_ be included; for Instagram, they're notoriously difficult to scrape and have limited API access. For Twitter in particular - with having a paywalled access to their APIs - isn't feasble for those who prefer to deploy through a Docker container strains the technical burden on this project.
 
 ## Contributing
 
@@ -79,6 +79,12 @@ After cloning/forking the project, you must have the proper prerequisites:
     ```sh
     go run cmd/generate-key
     ```
+
+#### Installing with `make`
+
+```bash
+make
+```
 
 #### Via Docker
 
