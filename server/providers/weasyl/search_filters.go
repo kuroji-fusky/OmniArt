@@ -33,13 +33,13 @@ const (
 )
 
 // Category filters
-
 const (
 	CategoryVisual     = 1000
 	CategoryLiterary   = 2000
 	CategoryMultimedia = 3000
 )
 
+// Ratings
 const (
 	RatingGeneral  = "g"
 	RatingMature   = "a"

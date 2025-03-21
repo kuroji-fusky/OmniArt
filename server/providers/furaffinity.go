@@ -15,7 +15,7 @@ const (
 	FA_IMAGE_URL = "d.furaffinity.net"
 )
 
-func FurAffinityUser(params furaffinity.FurAffinityUserParams) (map[string]any, error) {
+func FurAffinityUser(params furaffinity.FurAffinityUserParams) ([]map[string]interface{}, error) {
 	validFATabs := map[string]bool{
 		furaffinity.TabHome:        true,
 		furaffinity.TabGallery:     true,
@@ -25,17 +25,19 @@ func FurAffinityUser(params furaffinity.FurAffinityUserParams) (map[string]any, 
 		furaffinity.TabCommissions: true,
 	}
 
-	if ok, err := utils.CheckValidStringMap(validFATabs, params.Tab, ""); !ok {
+	if ok, err := utils.CheckValidMap(validFATabs, params.Tab, ""); !ok {
 		return nil, err
 	}
 
 	// Implementation WIP
-	tmpData := map[string]any{}
+	tmpData := []map[string]interface{}{{
+		"message": "some data here",
+	}}
 
 	return tmpData, nil
 }
 
-func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any, error) {
+func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]map[string]interface{}, error) {
 	// Implmentation WIP
 	// Bools from FurAffinityQueryParams struct are interpreted as literal `"1"` string from the API
 
@@ -53,7 +55,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.RangeManual: true,
 	}
 
-	if queryRangeOK, queryRangeErr := utils.CheckValidStringMap(validQueryRange, params.Range, ""); !queryRangeOK {
+	if queryRangeOK, queryRangeErr := utils.CheckValidMap(validQueryRange, params.Range, ""); !queryRangeOK {
 		return nil, queryRangeErr
 	}
 
@@ -64,7 +66,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.OrderByRelevancy:  true,
 	}
 
-	if orderByOK, queryOrderByErr := utils.CheckValidStringMap(validQueryOrderBy, params.OrderBy, ""); !orderByOK {
+	if orderByOK, queryOrderByErr := utils.CheckValidMap(validQueryOrderBy, params.OrderBy, ""); !orderByOK {
 		return nil, queryOrderByErr
 	}
 
@@ -74,7 +76,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.OrderDirectionDesc: true,
 	}
 
-	if orderDirectionOK, orderDirectionErr := utils.CheckValidStringMap(validQueryOrderDirection, params.OrderDirecton, ""); !orderDirectionOK {
+	if orderDirectionOK, orderDirectionErr := utils.CheckValidMap(validQueryOrderDirection, params.OrderDirecton, ""); !orderDirectionOK {
 		return nil, orderDirectionErr
 	}
 
@@ -84,11 +86,13 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) (map[string]any
 		furaffinity.QueryModeExtended: true,
 	}
 
-	if queryModeOK, queryModeErr := utils.CheckValidStringMap(validQueryMode, params.QueryMode, ""); !queryModeOK {
+	if queryModeOK, queryModeErr := utils.CheckValidMap(validQueryMode, params.QueryMode, ""); !queryModeOK {
 		return nil, queryModeErr
 	}
 
-	tmpData := map[string]any{}
+	tmpData := []map[string]interface{}{{
+		"message": "some data here",
+	}}
 
 	return tmpData, nil
 }
