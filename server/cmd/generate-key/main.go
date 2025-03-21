@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	"regexp"
+
+	"github.com/kuroji-fusky/OmniArt/server/internal/utils"
 )
 
 func main() {
@@ -19,12 +20,7 @@ func main() {
 
 	tokenToFeed := "om_" + hex.EncodeToString(bytes)
 
-	cwd, err := os.Getwd()
-	if err != nil {
-		log.Fatal("Error getting current working directory:", err)
-	}
-
-	envFilePath := filepath.Join(cwd, "..", ".env")
+	envFilePath := utils.RelativeToPath("..", ".env")
 
 	var envFileContent string
 

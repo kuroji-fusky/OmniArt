@@ -4,7 +4,9 @@ for the client to have a share of pizza and eat it too
 */
 package main
 
-func convertToTs(primitiveType string) string {
+import "github.com/kuroji-fusky/OmniArt/server/internal/utils"
+
+func primitivesToTypescript(primitiveType string) string {
 	switch primitiveType {
 	case "string":
 		return "string"
@@ -21,5 +23,5 @@ func convertToTs(primitiveType string) string {
 }
 
 func main() {
-
+	clientDir := utils.RelativeToPath("..", "client", "src")
 }
