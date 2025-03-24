@@ -1,1 +1,3 @@
-export * from "./arrayWritable"
+import { arrayWritable } from "./arrayWritable";
+
+export const filterItems = arrayWritable()

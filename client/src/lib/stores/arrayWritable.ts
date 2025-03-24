@@ -1,7 +1,7 @@
 import { writable } from "svelte/store"
 
-export const arrayWritable = <Data = unknown>() => {
-  const { subscribe, update, set } = writable<Data[]>([])
+export const arrayWritable = <Data = unknown>(initialValue: Data[] = []) => {
+  const { subscribe, update, set } = writable<Data[]>(initialValue)
 
   return {
     subscribe,
