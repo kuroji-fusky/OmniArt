@@ -8,7 +8,7 @@ import (
 )
 
 func GenericFetch(method string, url string, body io.Reader) *http.Response {
-	genericMoToGago := http.Client{
+	client := http.Client{
 		Timeout: time.Second * 20,
 	}
 
@@ -19,10 +19,9 @@ func GenericFetch(method string, url string, body io.Reader) *http.Response {
 
 	req.Header.Set("User-Agent", DefaultUserAgent)
 
-	res, resErr := genericMoToGago.Do(req)
-
+	res, resErr := client.Do(req)
 	if resErr != nil {
-		log.Fatal("Some oopsie occured when getting a response:", err)
+		log.Fatal("Some oopsie occured when getting a response:", resErr)
 	}
 
 	return res
