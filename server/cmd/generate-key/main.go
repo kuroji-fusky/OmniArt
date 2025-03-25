@@ -32,13 +32,15 @@ func main() {
 
 	re := regexp.MustCompile(`(?m)^OM_SECRET_API_TOKEN=.*$`)
 
+	tokenIdentifier := "OM_SECRET_API_TOKEN="
+
 	if re.MatchString(envFileContent) {
-		envFileContent = re.ReplaceAllString(envFileContent, "OM_SECRET_API_TOKEN="+tokenToFeed)
+		envFileContent = re.ReplaceAllString(envFileContent, tokenIdentifier+tokenToFeed)
 	} else {
 		if len(envFileContent) > 0 {
 			envFileContent += "\n"
 		}
-		envFileContent += "OM_SECRET_API_TOKEN=" + tokenToFeed
+		envFileContent += tokenIdentifier + tokenToFeed
 	}
 
 	err = os.WriteFile(envFilePath, []byte(envFileContent), 0644)
