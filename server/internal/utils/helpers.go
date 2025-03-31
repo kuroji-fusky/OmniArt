@@ -1,6 +1,8 @@
 package utils
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func CheckValidMap[T comparable](m map[T]bool, prop T, customErrMsg string) (bool, error) {
 	if _, exists := m[prop]; !exists {
