@@ -22,6 +22,7 @@
     "@tailwindcss/typography": "^0.5.14",
     "@types/node": "^22.10.10",
     "autoprefixer": "^10.4.20",
+    "dotenv": "^16.4.7",
     "postcss": "^8.4.41",
     "svelte": "^5.20.5",
     "svelte-check": "^4.1.4",
