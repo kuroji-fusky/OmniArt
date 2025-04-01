@@ -1,3 +1,6 @@
+/*
+Handler for Weasyl
+*/
 package providers
 
 import (
@@ -5,7 +8,7 @@ import (
 	"github.com/kuroji-fusky/OmniArt/server/providers/weasyl"
 )
 
-func WeasylSearchQuery(query weasyl.WeasylSearchFilters) ([]map[string]interface{}, error) {
+func WeasylSearchQuery(query weasyl.WeasylSearchFilters) ([]utils.Implementation_WIP, error) {
 	validSubcategories := map[int]bool{
 		weasyl.SubcategorySketch:            true,
 		weasyl.SubcategoryTraditional:       true,
@@ -56,10 +59,5 @@ func WeasylSearchQuery(query weasyl.WeasylSearchFilters) ([]map[string]interface
 		}
 	}
 
-	// Temporary only
-	tmpData := []map[string]interface{}{{
-		"message": "some data here",
-	}}
-
-	return tmpData, nil
+	return utils.TempData, nil
 }

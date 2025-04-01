@@ -15,7 +15,7 @@ const (
 	FA_IMAGE_URL = "d.furaffinity.net"
 )
 
-func FurAffinityUser(params furaffinity.FurAffinityUserParams) ([]map[string]interface{}, error) {
+func FurAffinityUser(params furaffinity.FurAffinityUserParams) ([]utils.Implementation_WIP, error) {
 	validFATabs := map[string]bool{
 		furaffinity.TabHome:        true,
 		furaffinity.TabGallery:     true,
@@ -29,15 +29,10 @@ func FurAffinityUser(params furaffinity.FurAffinityUserParams) ([]map[string]int
 		return nil, err
 	}
 
-	// Implementation WIP
-	tmpData := []map[string]interface{}{{
-		"message": "some data here",
-	}}
-
-	return tmpData, nil
+	return utils.TempData, nil
 }
 
-func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]map[string]interface{}, error) {
+func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]utils.Implementation_WIP, error) {
 	// Implmentation WIP
 	// Bools from FurAffinityQueryParams struct are interpreted as literal `"1"` string from the API
 
@@ -90,9 +85,5 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]map[string]i
 		return nil, queryModeErr
 	}
 
-	tmpData := []map[string]interface{}{{
-		"message": "some data here",
-	}}
-
-	return tmpData, nil
+	return utils.TempData, nil
 }

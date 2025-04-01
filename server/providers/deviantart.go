@@ -8,11 +8,9 @@ import (
 	"github.com/kuroji-fusky/OmniArt/server/providers/deviantart"
 )
 
-const (
-	DA_URL = "https://www.deviantart.com"
-)
+const DA_URL = "https://www.deviantart.com"
 
-func DeviantArtQuery(params *deviantart.DASearchQuery) ([]map[string]interface{}, error) {
+func DeviantArtSearchQuery(params *deviantart.DASearchQuery) ([]utils.Implementation_WIP, error) {
 	validQueryValues := map[string]bool{
 		deviantart.QueryOrderWatch:      true,
 		deviantart.QueryOrderMostRecent: true,
@@ -25,9 +23,5 @@ func DeviantArtQuery(params *deviantart.DASearchQuery) ([]map[string]interface{}
 		return nil, queryOrderErr
 	}
 
-	tmpData := []map[string]interface{}{{
-		"message": "some data here",
-	}}
-
-	return tmpData, nil
+	return utils.TempData, nil
 }
