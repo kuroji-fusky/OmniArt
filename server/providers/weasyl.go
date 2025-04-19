@@ -9,7 +9,7 @@ import (
 )
 
 func WeasylSearchQuery(query weasyl.WeasylSearchFilters) ([]utils.Implementation_WIP, error) {
-	validSubcategories := map[int]bool{
+	validSubcategories := map[weasyl.WeasylSubcategory]bool{
 		weasyl.SubcategorySketch:            true,
 		weasyl.SubcategoryTraditional:       true,
 		weasyl.SubcategoryDigital:           true,
@@ -30,23 +30,23 @@ func WeasylSearchQuery(query weasyl.WeasylSearchFilters) ([]utils.Implementation
 		weasyl.SubcategoryEmbeddedVideo:     true,
 	}
 
-	if subcatOK, subcatErr := utils.CheckValidMap(validSubcategories, query.Subcategory, ""); !subcatOK {
+	if subcatOK, subcatErr := utils.CheckValidMap(validSubcategories, *query.Subcategory, ""); !subcatOK {
 		return nil, subcatErr
 	}
 
 	// Category filters
-	validCategories := map[int]bool{
+	validCategories := map[weasyl.WeasylCategory]bool{
 		weasyl.CategoryVisual:     true,
 		weasyl.CategoryLiterary:   true,
 		weasyl.CategoryMultimedia: true,
 	}
 
-	if catOK, catErr := utils.CheckValidMap(validCategories, query.Category, ""); !catOK {
+	if catOK, catErr := utils.CheckValidMap(validCategories, *query.Category, ""); !catOK {
 		return nil, catErr
 	}
 
 	// Ratings
-	validRatings := map[string]bool{
+	validRatings := map[weasyl.WeasylRating]bool{
 		weasyl.RatingGeneral:  true,
 		weasyl.RatingMature:   true,
 		weasyl.RatingExplicit: true,

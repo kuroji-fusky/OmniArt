@@ -1,35 +1,26 @@
 package furrynetwork
 
-type StatsAPIResponse struct {
-	Favorites StatFavorites `json:"favorites"`
-	Followers StatFollowers `json:"followers"`
-	Following StatFollowing `json:"following"`
-	Promotes  StatPromotes  `json:"promotes"`
-}
-
 type CollatedTotal struct {
 	Total int `json:"total"`
 }
 
-type (
-	StatFavorites struct {
-		CollatedTotal
-	}
+type StatFavorites struct {
+	CollatedTotal
+}
 
-	StatFollowers struct {
-		Characters []Characters `json:"characters"`
-		CollatedTotal
-	}
+type StatFollowers struct {
+	Characters []Characters `json:"characters"`
+	CollatedTotal
+}
 
-	StatFollowing struct {
-		Characters []Characters `json:"characters"`
-		CollatedTotal
-	}
+type StatFollowing struct {
+	Characters []Characters `json:"characters"`
+	CollatedTotal
+}
 
-	StatPromotes struct {
-		CollatedTotal
-	}
-)
+type StatPromotes struct {
+	CollatedTotal
+}
 
 type ProfileStats struct {
 	Artwork    int `json:"artwork"`
@@ -41,4 +32,11 @@ type ProfileStats struct {
 	Followers  int `json:"followers"`
 	Following  int `json:"following"`
 	Promotes   int `json:"promotes"`
+}
+
+type StatsAPIResponse struct {
+	Favorites StatFavorites `json:"favorites"`
+	Followers StatFollowers `json:"followers"`
+	Following StatFollowing `json:"following"`
+	Promotes  StatPromotes  `json:"promotes"`
 }
