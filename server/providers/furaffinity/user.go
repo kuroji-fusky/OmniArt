@@ -1,15 +1,17 @@
 package furaffinity
 
-type FurAffinityUserParams struct {
-	User string `json:"user"`
-	Tab  string `json:"tab"`
-}
+type FATab string
 
 const (
-	TabHome        = "home"
-	TabGallery     = "gallery"
-	TabScraps      = "scraps"
-	TabFavorites   = "favorites"
-	TabJournals    = "journals"
-	TabCommissions = "commissions"
+	TabHome        FATab = "home"
+	TabGallery     FATab = "gallery"
+	TabScraps      FATab = "scraps"
+	TabFavorites   FATab = "favorites"
+	TabJournals    FATab = "journals"
+	TabCommissions FATab = "commissions"
 )
+
+type FurAffinityUserParams struct {
+	User string `json:"user"`
+	Tab  FATab  `json:"tab"`
+}

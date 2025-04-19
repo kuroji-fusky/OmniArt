@@ -11,7 +11,7 @@ import (
 const DA_URL = "https://www.deviantart.com"
 
 func DeviantArtSearchQuery(params *deviantart.DASearchQuery) ([]utils.Implementation_WIP, error) {
-	validQueryValues := map[string]bool{
+	validQueryValues := map[deviantart.DAQueryOrder]bool{
 		deviantart.QueryOrderWatch:      true,
 		deviantart.QueryOrderMostRecent: true,
 		deviantart.QueryOrderWeek:       true,

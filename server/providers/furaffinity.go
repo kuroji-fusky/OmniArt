@@ -16,7 +16,7 @@ const (
 )
 
 func FurAffinityUser(params furaffinity.FurAffinityUserParams) ([]utils.Implementation_WIP, error) {
-	validFATabs := map[string]bool{
+	validFATabs := map[furaffinity.FATab]bool{
 		furaffinity.TabHome:        true,
 		furaffinity.TabGallery:     true,
 		furaffinity.TabScraps:      true,
@@ -37,7 +37,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]utils.Implem
 	// Bools from FurAffinityQueryParams struct are interpreted as literal `"1"` string from the API
 
 	// "range" param
-	validQueryRange := map[string]bool{
+	validQueryRange := map[furaffinity.FARange]bool{
 		furaffinity.Range1Day:   true,
 		furaffinity.Range3Days:  true,
 		furaffinity.Range7Days:  true,
@@ -55,7 +55,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]utils.Implem
 	}
 
 	// "order-by" query
-	validQueryOrderBy := map[string]bool{
+	validQueryOrderBy := map[furaffinity.FAOrderBy]bool{
 		furaffinity.OrderByPopularity: true,
 		furaffinity.OrderByDate:       true,
 		furaffinity.OrderByRelevancy:  true,
@@ -66,7 +66,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]utils.Implem
 	}
 
 	// "order-direction" query
-	validQueryOrderDirection := map[string]bool{
+	validQueryOrderDirection := map[furaffinity.FAOrderDirection]bool{
 		furaffinity.OrderDirectionAsc:  true,
 		furaffinity.OrderDirectionDesc: true,
 	}
@@ -75,7 +75,7 @@ func FurAffinityQuery(params furaffinity.FurAffinityQueryParams) ([]utils.Implem
 		return nil, orderDirectionErr
 	}
 
-	validQueryMode := map[string]bool{
+	validQueryMode := map[furaffinity.FAQueryMode]bool{
 		furaffinity.QueryModeAll:      true,
 		furaffinity.QueryModeAny:      true,
 		furaffinity.QueryModeExtended: true,
