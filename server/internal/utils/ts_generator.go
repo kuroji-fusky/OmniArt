@@ -30,12 +30,13 @@ func GenerateTSType(v interface{}, opts *GTSOptions) string {
 		}
 
 		jsonParts := strings.Split(jsonTag, ",")
+
 		jsonName := jsonParts[0]
 		isOptional := len(jsonParts) > 1 && jsonParts[1] == "omitempty"
 
 		// Wrap the prop with quotes if it has dashes
 		if strings.Contains(jsonName, "-") {
-			jsonName = `"` + jsonParts[0] + `"`
+			jsonName = `"` + jsonName + `"`
 		}
 
 		tsType := field.Tag.Get("ts_type")

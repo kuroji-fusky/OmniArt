@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/gocolly/colly/v2"
 )
 
 func GenericFetch(method string, url string, body io.Reader) *http.Response {
@@ -25,4 +27,42 @@ func GenericFetch(method string, url string, body io.Reader) *http.Response {
 	}
 
 	return res
+}
+
+type FetchHTMLOptions struct {
+	Async bool
+}
+
+// A wrapper for `go-colly`
+func FetchHTML(url string, opts *FetchHTMLOptions) string {
+	var inhaler *colly.Collector
+
+	if opts != nil && opts.Async {
+		inhaler = colly.NewCollector(
+			colly.UserAgent(DefaultUserAgent),
+			colly.Async(),
+		)
+	} else {
+		inhaler = colly.NewCollector(
+			colly.UserAgent(DefaultUserAgent),
+		)
+	}
+
+	var htmlContent string
+
+	inhaler.OnHTML("html", func(e *colly.HTMLElement) {
+		var err error
+		htmlContent, err = e.DOM.Html()
+
+		if err != nil {
+			log.Fatal("Error extracting HTML content:", err)
+		}
+	})
+
+	err := inhaler.Visit(url)
+	if err != nil {
+		log.Fatal("Error visiting URL:", err)
+	}
+
+	return htmlContent
 }
