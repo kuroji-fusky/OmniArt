@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Meta } from "$lib/components";
-  import InputField from "$lib/components/InputField.svelte";
+  import { Meta, InputField } from "$lib/components";
   import type { PageData } from "./$types";
 
   let { data }: { data: PageData } = $props();

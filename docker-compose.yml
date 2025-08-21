@@ -3,7 +3,7 @@ version: "3"
 services:
   om-client:
     build:
-      context: ./client
+      context: ./client/web
       dockerfile: Dockerfile
 
   om-server:
